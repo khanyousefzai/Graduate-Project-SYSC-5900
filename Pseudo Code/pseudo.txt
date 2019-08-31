@@ -1,0 +1,114 @@
+##################################### PSEUDO CODE ######################################
+#### WHOLE PORCESS OF DATACLEANING, DATA PREPROCESSING AND ALGORITHM IMPLEMENTATION ####
+########################################################################################
+#Initiailzing python notebook thorough Google colab
+Importing the data set
+Checking the variance of the features in the dataset
+Removing low variance, duplciates and empty features
+Removing symbols '/, :,',.' in the columns security dpoist,
+		 cleaning fee and price 
+Removing symbols '%, :' in the column host_response_rate
+Transformation of first and last review taking the differnce
+Replacing missing values with mean
+forloop(1 thorugh 3):
+	if length of the dataframe columns = 29
+		deleting First Review
+		deleting Last Review
+	else:
+	deleting Unnamed columns
+	droping missing values
+	Function availability
+    		Pass In: passing availability column from the dataframe
+    		if avaialbility is greater then or equal to 180
+			return 'high'
+		else return 'low'
+		endif
+	        Call: asd(local varaible) through lambda expression and apply function
+    		Pass Out: Availability class with high or low classes in the dataframe
+	Endfunction
+	Function pricecol
+    		Pass In: passing price column from the dataframe
+    		if price is less then or equal to 100
+			return 'cheap'
+		endif
+		if price is within 100 and 200
+			return 'affordable'
+		endif
+		if price is greater than 100
+			return 'expensive'
+		endif
+	        Call: asd(local Variable) through lambda expression and apply function
+    		Pass Out: Price class with cheap, affrodable and
+			  expensive classes in the dataframe
+	Endfunction
+end forloop
+Checking corelation and removing the features 
+with no corealtion between the dependent varialbe
+for loop  iteration thorugh the columns in the dataframe:
+	calcualting the cross table of all the columns
+	applying chi squared using chi2_contingency function
+	storing stat degree of freedom , expected and the probalbity
+	setting p of 0.95 to check hypothesis
+	calcualting critical by giving prob and degree of freedom
+	if absolute of stat is greater than crtical
+		Reject null hypothesis
+	else:
+		We cannot reject null hypothesis
+	endif
+	deleting local variables to release the space
+end forloop
+Function str_bol
+    	Pass In: passing columns from the dataframe
+    	if column is_location_exact or host_identity or host_is_superhost = 't'
+		return True
+	else:
+		return False
+	endif
+	Call: a(local Variable) through lambda expression and apply function
+    	Pass Out: Conversion of columns is_location_exact, host_identitiy and
+		  host_is_superhost to boolean with True or False
+Endfunction
+Function pric
+    	Pass In: passing Priceclass and avaialbilityclass from the dataframe
+    	if Priceclass is cheap or Availability class is low
+		return 0
+	endif
+	if Priceclass is affordable or Availability class is high
+		return 1
+	endif
+	if Priceclass is expensive
+		return 2
+	endif
+		return False
+	endif
+	Call: ss(local Variable) through lambda expression and apply function
+    	Pass Out: Conversion of Priceclass to 0,1,2 classes and
+		  Avaialiblityclass to 0 and 1 classes 
+Endfunction
+Forloop iteration thorugh all columns in the data frame
+	Changing type to integers	
+	scaling the feature from 0 to 1
+end forloop
+Create dummy variables for the cateogrical vraibles using concat function from pandas
+forloop iteration through  categorical columns
+	if value count of 1 is less than 10 
+	del column
+end forloop 
+Dividing the dataset into test and train by 20 percent and 80 percent respectively
+creating two sets of data one without avaialbity and other without price
+This thing helps to check model for avaialibity and price prediction
+
+################## ARTIFICIAL NEURAL NETWORK ###########################
+########################################################################
+Number of Neurons First Layer: 300 * (Input = 168 Features)
+Number of Neurons Hidden Layers: 200
+Output Layer Neruons: 3 or 1
+Number of Hidden Layers:2
+Activation Function: ReLu
+Optimzer: Adam
+Regulizers: L2
+Loss Function: Categorical Entropy or Binary Cross Entropy
+Metrics:Accuracy
+Kernel Initializer: Random_Normal
+Dropout Rate: 0.5
+Probalbity Selection Rate:0.5
